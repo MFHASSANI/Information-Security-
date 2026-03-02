@@ -69,4 +69,3 @@ This project was created as coursework for the Information Security class at AUC
 ## Usage Notice
 
 This repository is intended for educational demonstration only.  
-The materials should not be reused for malicious or unauthorized activities.
