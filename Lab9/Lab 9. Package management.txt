@@ -1,0 +1,131 @@
+Last login: Mon Mar  2 12:45:12 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air ~ % brew --version
+Homebrew 5.0.15
+(base) faridhassani@Farids-MacBook-Air ~ % brew update
+==> Updating Homebrew...
+Already up-to-date.
+(base) faridhassani@Farids-MacBook-Air ~ % brew upgrade
+==> Casks with 'auto_updates true' or 'version :latest' will not be upgraded; pa
+Error: Cask 'dotnet-sdk' definition is invalid: 'conflicts_with' stanza failed with: Calling conflicts_with formula: is disabled! There is no replacement.
+(base) faridhassani@Farids-MacBook-Air ~ % brew upgrade --formula
+(base) faridhassani@Farids-MacBook-Air ~ % brew outdated
+dotnet-sdk (9.0.203) != 10.0.103
+smlnj (110.99.7) != 110.99.9
+(base) faridhassani@Farids-MacBook-Air ~ % brew upgrade smlnj
+Warning: smlnj has been deprecated because it does not pass the macOS Gatekeeper check! It will be disabled on 2026-09-01.
+==> Fetching downloads for: smlnj
+✔︎ Cask smlnj (110.99.9)                              Verified     21.9MB/ 21.9MB
+==> Upgrading 1 outdated package:
+smlnj 110.99.7 -> 110.99.9
+==> Upgrading smlnj
+==> Caveats
+To use smlnj, you may need to add the /usr/local/smlnj/bin directory
+to your PATH environment variable, e.g. (for Bash shell):
+  export PATH=/usr/local/smlnj/bin:"$PATH"
+
+==> Uninstalling packages with `sudo` (which may request your password)...
+org.smlnj.amd64.pkg
+Password:
+==> Running installer for smlnj with `sudo` (which may request your password)...
+installer: Package name is SML/NJ
+installer: Installing at base path /
+installer: The install was successful.
+==> Purging files for version 110.99.7 of Cask smlnj
+🍺  smlnj was successfully upgraded!
+(base) faridhassani@Farids-MacBook-Air ~ % brew search nginx
+==> Formulae
+nginx
+(base) faridhassani@Farids-MacBook-Air ~ % brew install nginx
+==> Fetching downloads for: nginx
+✔︎ Bottle Manifest nginx (1.29.5)                     Downloaded   11.3KB/ 11.3KB
+✔︎ Bottle nginx (1.29.5)                              Downloaded    1.5MB/  1.5MB
+==> Pouring nginx--1.29.5.arm64_tahoe.bottle.1.tar.gz
+==> Caveats
+Docroot is: /opt/homebrew/var/www
+
+The default port has been set in /opt/homebrew/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files in /opt/homebrew/etc/nginx/servers/.
+
+To start nginx now and restart at login:
+  brew services start nginx
+Or, if you don't want/need a background service you can just run:
+  /opt/homebrew/opt/nginx/bin/nginx -g daemon\ off\;
+==> Summary
+🍺  /opt/homebrew/Cellar/nginx/1.29.5: 27 files, 2.6MB
+==> Running `brew cleanup nginx`...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+(base) faridhassani@Farids-MacBook-Air ~ % nginx -v
+nginx version: nginx/1.29.5
+(base) faridhassani@Farids-MacBook-Air ~ % brew services start nginx
+==> Successfully started `nginx` (label: homebrew.mxcl.nginx)
+(base) faridhassani@Farids-MacBook-Air ~ % http://localhost:8080
+zsh: no such file or directory: http://localhost:8080
+(base) faridhassani@Farids-MacBook-Air ~ % apt-cache depends nginx
+zsh: command not found: apt-cache
+(base) faridhassani@Farids-MacBook-Air ~ % brew info nginx
+==> nginx ✔: stable 1.29.5 (bottled), HEAD
+HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+https://nginx.org/
+Installed
+/opt/homebrew/Cellar/nginx/1.29.5 (27 files, 2.6MB) *
+  Poured from bottle using the formulae.brew.sh API on 2026-03-02 at 12:59:45
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/n/nginx.rb
+License: BSD-2-Clause
+==> Dependencies
+Required: openssl@3 ✔, pcre2 ✔
+==> Options
+--HEAD
+	Install HEAD version
+==> Caveats
+Docroot is: /opt/homebrew/var/www
+
+The default port has been set in /opt/homebrew/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files in /opt/homebrew/etc/nginx/servers/.
+
+To restart nginx after an upgrade:
+  brew services restart nginx
+Or, if you don't want/need a background service you can just run:
+  /opt/homebrew/opt/nginx/bin/nginx -g daemon\ off\;
+==> Downloading https://formulae.brew.sh/api/formula/nginx.json
+==> Analytics
+install: 10,068 (30 days), 28,276 (90 days), 136,984 (365 days)
+install-on-request: 10,027 (30 days), 28,169 (90 days), 136,706 (365 days)
+build-error: 2 (30 days)
+(base) faridhassani@Farids-MacBook-Air ~ % brew uninstall nginx
+Uninstalling /opt/homebrew/Cellar/nginx/1.29.5... (27 files, 2.6MB)
+
+Warning: The following nginx configuration files have not been removed!
+If desired, remove them manually with `rm -rf`:
+  /opt/homebrew/etc/nginx
+  /opt/homebrew/etc/nginx/fastcgi.conf
+  /opt/homebrew/etc/nginx/fastcgi.conf.default
+  /opt/homebrew/etc/nginx/fastcgi_params
+  /opt/homebrew/etc/nginx/fastcgi_params.default
+  /opt/homebrew/etc/nginx/koi-utf
+  /opt/homebrew/etc/nginx/koi-win
+  /opt/homebrew/etc/nginx/mime.types
+  /opt/homebrew/etc/nginx/mime.types.default
+  /opt/homebrew/etc/nginx/nginx.conf
+  /opt/homebrew/etc/nginx/nginx.conf.default
+  /opt/homebrew/etc/nginx/scgi_params
+  /opt/homebrew/etc/nginx/scgi_params.default
+  /opt/homebrew/etc/nginx/servers
+  /opt/homebrew/etc/nginx/uwsgi_params
+  /opt/homebrew/etc/nginx/uwsgi_params.default
+  /opt/homebrew/etc/nginx/win-utf
+==> Autoremoving 4 unneeded formulae:
+expat
+icu4c@77
+libxdamage
+python@3.13
+Uninstalling /opt/homebrew/Cellar/libxdamage/1.1.7... (13 files, 104.2KB)
+Uninstalling /opt/homebrew/Cellar/python@3.13/3.13.12_1... (3,625 files, 72MB)
+Uninstalling /opt/homebrew/Cellar/expat/2.7.4... (23 files, 725.7KB)
+Uninstalling /opt/homebrew/Cellar/icu4c@77/77.1_1... (277 files, 84.9MB)
+(base) faridhassani@Farids-MacBook-Air ~ % 
