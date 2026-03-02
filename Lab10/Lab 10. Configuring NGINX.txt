@@ -1,0 +1,31 @@
+Last login: Mon Mar  2 13:10:41 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air ~ % cd Desktop/Final_Labs/Information-Security-/Lab10
+(base) faridhassani@Farids-MacBook-Air Lab10 % pwd
+/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab10
+(base) faridhassani@Farids-MacBook-Air Lab10 % brew install nginx
+✔︎ JSON API cask.jws.json                             Downloaded   15.3MB/ 15.3MB
+✔︎ JSON API formula.jws.json                          Downloaded   31.9MB/ 31.9MB
+Warning: nginx 1.29.5 is already installed and up-to-date.
+To reinstall 1.29.5, run:
+  brew reinstall nginx
+(base) faridhassani@Farids-MacBook-Air Lab10 % brew services start nginx
+Service `nginx` already started, use `brew services restart nginx` to restart.
+(base) faridhassani@Farids-MacBook-Air Lab10 % open http://localhost:8080
+(base) faridhassani@Farids-MacBook-Air Lab10 % vim /opt/homebrew/var/www/my_site.html
+(base) faridhassani@Farids-MacBook-Air Lab10 % vim /opt/homebrew/etc/nginx/servers/my_site.conf
+(base) faridhassani@Farids-MacBook-Air Lab10 % nginx -t
+brew services restart nginx
+nginx: the configuration file /opt/homebrew/etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /opt/homebrew/etc/nginx/nginx.conf test is successful
+Stopping `nginx`... (might take a while)
+==> Successfully stopped `nginx` (label: homebrew.mxcl.nginx)
+==> Successfully started `nginx` (label: homebrew.mxcl.nginx)
+(base) faridhassani@Farids-MacBook-Air Lab10 % open http://localhost:8000
+(base) faridhassani@Farids-MacBook-Air Lab10 % vim api.py
+(base) faridhassani@Farids-MacBook-Air Lab10 % python3 api.py
+API running on port 9000...
+vim /opt/homebrew/etc/nginx/servers/my_site.conf
+127.0.0.1 - - [02/Mar/2026 13:52:56] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [02/Mar/2026 13:53:54] "GET / HTTP/1.0" 200 -
+
