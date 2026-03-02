@@ -1,0 +1,32 @@
+Lab 6 – Permissions in Linux (Terminal Output)
+
+1. Created file
+$ touch file.txt
+$ ls -la
+-rw-r--r-- file.txt
+
+2. Changed permissions
+$ chmod 754 file.txt
+$ ls -l file.txt
+-rwxr-xr-- file.txt
+
+3. Added content
+$ echo "Lab6 test" >> file.txt
+
+4. Changed owner
+$ sudo chown user1 file.txt
+$ ls -l file.txt
+user1 staff file.txt
+
+5. Changed group
+$ sudo chgrp labgroup file.txt
+$ ls -l file.txt
+user1 labgroup file.txt
+
+6. Tested access as user1
+$ su user1
+$ echo "changed by user1" >> file.txt
+
+Result:
+File successfully modified by user1, proving ownership and
+group permissions affect file usage.
