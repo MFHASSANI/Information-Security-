@@ -1,0 +1,370 @@
+Last login: Mon Mar  2 19:51:48 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air ~ % cd Desktop/Final_Labs/Information-Security- 
+(base) faridhassani@Farids-MacBook-Air Information-Security- % mkdir -p Lab5
+(base) faridhassani@Farids-MacBook-Air Information-Security- % cd
+(base) faridhassani@Farids-MacBook-Air ~ % pwd
+/Users/faridhassani
+(base) faridhassani@Farids-MacBook-Air ~ % cd Desktop/Final_Labs/Information-Security-/Lab5
+(base) faridhassani@Farids-MacBook-Air Lab5 % pwd
+/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab5
+(base) faridhassani@Farids-MacBook-Air Lab5 % dscl . list /Users
+_accessoryupdater
+_amavisd
+_analyticsd
+_aonsensed
+_appinstalld
+_appleevents
+_applepay
+_appowner
+_appserver
+_appstore
+_ard
+_assetcache
+_astris
+_atsserver
+_audiomxd
+_avbdeviced
+_avphidbridge
+_backgroundassets
+_biome
+_calendar
+_captiveagent
+_ces
+_clamav
+_cmiodalassistants
+_coreaudiod
+_coremediaiod
+_coreml
+_corespeechd
+_ctkd
+_cvmsroot
+_cvs
+_cyrus
+_darwindaemon
+_datadetectors
+_demod
+_devdocs
+_devicemgr
+_diagnosticservicesd
+_diskimagesiod
+_displaypolicyd
+_distnote
+_dovecot
+_dovenull
+_dpaudio
+_driverkit
+_eligibilityd
+_eppc
+_findmydevice
+_fpsd
+_ftp
+_gamecontrollerd
+_geod
+_hidd
+_iconservices
+_installassistant
+_installcoordinationd
+_installer
+_jabber
+_kadmin_admin
+_kadmin_changepw
+_knowledgegraphd
+_krb_anonymous
+_krb_changepw
+_krb_kadmin
+_krb_kerberos
+_krb_krbtgt
+_krbfast
+_krbtgt
+_launchservicesd
+_lda
+_locationd
+_logd
+_lp
+_mailman
+_mbsetupuser
+_mcxalr
+_mdnsresponder
+_mds_stores
+_mmaintenanced
+_mobileasset
+_mobilegestalthelper
+_modelmanagerd
+_mysql
+_naturallanguaged
+_nearbyd
+_netbios
+_netstatistics
+_networkd
+_neuralengine
+_notification_proxy
+_nsurlsessiond
+_oahd
+_ondemand
+_postfix
+_postgres
+_qtss
+_reportmemoryexception
+_reportsystemmemory
+_rmd
+_sandbox
+_screensaver
+_scsd
+_securityagent
+_sntpd
+_softwareupdate
+_spinandd
+_spotlight
+_sshd
+_svn
+_swtransparencyd
+_systemstatusd
+_taskgated
+_teamsserver
+_terminusd
+_timed
+_timezone
+_tokend
+_trustd
+_trustevaluationagent
+_unknown
+_update_sharing
+_usbmuxd
+_uucp
+_warmd
+_webauthserver
+_windowserver
+_www
+_wwwproxy
+_xserverdocs
+daemon
+faridhassani
+nobody
+root
+windscribe
+(base) faridhassani@Farids-MacBook-Air Lab5 % whoami
+faridhassani
+(base) faridhassani@Farids-MacBook-Air Lab5 % sudo sysadminctl -addUser user1 -password 123456 -fullName "User One"
+Password:
+2026-03-02 20:11:44.584 sysadminctl[3877:118093] ----------------------------
+2026-03-02 20:11:44.584 sysadminctl[3877:118093] No clear text password or interactive option was specified (adduser, change/reset password will not allow user to use FDE) !
+2026-03-02 20:11:44.584 sysadminctl[3877:118093] ----------------------------
+2026-03-02 20:11:45.018 sysadminctl[3877:118093] Creating user record…
+2026-03-02 20:11:45.617 sysadminctl[3877:118093] Assigning UID: 502 GID: 20
+2026-03-02 20:11:49.428 sysadminctl[3877:118093] Creating home directory at /Users/user1
+(base) faridhassani@Farids-MacBook-Air Lab5 % dscl . list /Users | grep user1
+user1
+(base) faridhassani@Farids-MacBook-Air Lab5 % ls /Users
+Shared		faridhassani	user1
+(base) faridhassani@Farids-MacBook-Air Lab5 % cat /etc/passwd | grep user1
+(base) faridhassani@Farids-MacBook-Air Lab5 % su - user1
+Password:
+su: Sorry
+(base) faridhassani@Farids-MacBook-Air Lab5 % whoami
+faridhassani
+(base) faridhassani@Farids-MacBook-Air Lab5 % sudo passwd user1
+Changing password for user1.
+New password:
+Retype new password:
+
+################################### WARNING ###################################
+# This tool does not update the login keychain password.                      #
+# To update it, run `security set-keychain-password` as the user in question, #
+# or as root providing a path to such user's login keychain.                  #
+###############################################################################
+
+(base) faridhassani@Farids-MacBook-Air Lab5 % su - user1
+Password:
+user1@Farids-MacBook-Air ~ % whoami
+user1
+user1@Farids-MacBook-Air ~ % pwd
+/Users/user1
+user1@Farids-MacBook-Air ~ % id
+uid=502(user1) gid=20(staff) groups=20(staff),12(everyone),61(localaccounts),701(com.apple.sharepoint.group.1),702(com.apple.sharepoint.group.2),100(_lpoperator)
+user1@Farids-MacBook-Air ~ % groups
+staff everyone localaccounts com.apple.sharepoint.group.1 com.apple.sharepoint.group.2 _lpoperator
+user1@Farids-MacBook-Air ~ % dscl . list /Groups
+_accessoryupdater
+_amavisd
+_analyticsd
+_analyticsusers
+_aonsensed
+_appinstalld
+_appleevents
+_applepay
+_appowner
+_appserveradm
+_appserverusr
+_appstore
+_ard
+_assetcache
+_astris
+_atsserver
+_audiomxd
+_avphidbridge
+_backgroundassets
+_biome
+_calendar
+_captiveagent
+_ces
+_clamav
+_cmiodalassistants
+_coreaudiod
+_coremediaiod
+_coreml
+_corespeechd
+_ctkd
+_cvms
+_cvs
+_darwindaemon
+_datadetectors
+_demod
+_detachedsig
+_devdocs
+_developer
+_devicemgr
+_diagnosticservicesd
+_diskimagesiod
+_displaypolicyd
+_distnote
+_dovenull
+_dpaudio
+_driverkit
+_eligibilityd
+_eppc
+_findmydevice
+_fpsd
+_gamecontrollerd
+_geod
+_guest
+_hidd
+_iconservices
+_installassistant
+_installcoordinationd
+_installer
+_jabber
+_keytabusers
+_knowledgegraphd
+_launchservicesd
+_lda
+_locationd
+_logd
+_lp
+_lpadmin
+_lpoperator
+_mailman
+_mbsetupuser
+_mcxalr
+_mdnsresponder
+_mds_stores
+_mmaintenanced
+_mobileasset
+_mobilegestalthelper
+_modelmanagerd
+_mysql
+_naturallanguaged
+_nearbyd
+_netbios
+_netstatistics
+_networkd
+_neuralengine
+_notification_proxy
+_nsurlsessiond
+_oahd
+_odchpass
+_ondemand
+_postdrop
+_postfix
+_postgres
+_qtss
+_reportmemoryexception
+_reportsystemmemory
+_rmd
+_sandbox
+_screensaver
+_scsd
+_securityagent
+_sntpd
+_softwareupdate
+_spinandd
+_spotlight
+_sshd
+_svn
+_swtransparencyd
+_systemstatusd
+_taskgated
+_teamsserver
+_terminusd
+_timed
+_timezone
+_tokend
+_trustd
+_trustevaluationagent
+_unknown
+_update_sharing
+_usbmuxd
+_uucp
+_warmd
+_webauthserver
+_webdeveloper
+_windowserver
+_www
+_wwwproxy
+_xserverdocs
+accessibility
+admin
+authedusers
+bin
+certusers
+com.apple.access_disabled
+com.apple.access_ftp
+com.apple.access_remote_ae
+com.apple.access_screensharing
+com.apple.access_sessionkey
+com.apple.access_ssh
+com.apple.sharepoint.group.1
+com.apple.sharepoint.group.2
+consoleusers
+daemon
+dialer
+everyone
+group
+interactusers
+kmem
+localaccounts
+mail
+netaccounts
+netusers
+network
+nobody
+nogroup
+operator
+owner
+procmod
+procview
+staff
+sys
+tty
+utmp
+wheel
+windscribe
+user1@Farids-MacBook-Air ~ % exit
+(base) faridhassani@Farids-MacBook-Air Lab5 % whoami
+faridhassani
+(base) faridhassani@Farids-MacBook-Air Lab5 % sudo dscl . create /Groups/labgroup
+(base) faridhassani@Farids-MacBook-Air Lab5 % sudo dscl . create /Groups/labgroup PrimaryGroupID 600
+(base) faridhassani@Farids-MacBook-Air Lab5 % dscl . list /Groups | grep labgroup
+labgroup
+(base) faridhassani@Farids-MacBook-Air Lab5 % sudo dscl . append /Groups/labgroup GroupMembership user1
+(base) faridhassani@Farids-MacBook-Air Lab5 % dscl . read /Groups/labgroup
+dsAttrTypeNative:record_daemon_version: 9480000
+AppleMetaNodeLocation: /Local/Default
+GeneratedUID: 5DD3AFF6-F645-4350-B4A5-D1478D3BD19C
+GroupMembership: user1
+PrimaryGroupID: 600
+RecordName: labgroup
+RecordType: dsRecTypeStandard:Groups
+(base) faridhassani@Farids-MacBook-Air Lab5 % id user1
+uid=502(user1) gid=20(staff) groups=20(staff),600(labgroup),12(everyone),61(localaccounts),701(com.apple.sharepoint.group.1),702(com.apple.sharepoint.group.2),100(_lpoperator)
+(base) faridhassani@Farids-MacBook-Air Lab5 % 
