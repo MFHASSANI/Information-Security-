@@ -1,0 +1,1890 @@
+Last login: Mon Mar  2 21:56:15 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air ~ % cd Desktop/Final_Labs/Information-Security-/Lab12
+(base) faridhassani@Farids-MacBook-Air Lab12 % mkdir brute-force-server
+cd brute-force-server
+(base) faridhassani@Farids-MacBook-Air brute-force-server % python3 -m venv venv 
+source venv/bin/activate
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % which python
+python --version
+/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab12/brute-force-server/venv/bin/python
+Python 3.13.9
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % pip install "fastapi[standard]"
+Collecting fastapi[standard]
+  Using cached fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+Collecting starlette>=0.46.0 (from fastapi[standard])
+  Using cached starlette-0.52.1-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic>=2.7.0 (from fastapi[standard])
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi[standard])
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi[standard])
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi[standard])
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting fastapi-cli>=0.0.8 (from fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached fastapi_cli-0.0.24-py3-none-any.whl.metadata (6.4 kB)
+Collecting httpx<1.0.0,>=0.23.0 (from fastapi[standard])
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jinja2>=3.1.5 (from fastapi[standard])
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting python-multipart>=0.0.18 (from fastapi[standard])
+  Using cached python_multipart-0.0.22-py3-none-any.whl.metadata (1.8 kB)
+Collecting email-validator>=2.0.0 (from fastapi[standard])
+  Using cached email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn>=0.12.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached uvicorn-0.41.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting pydantic-settings>=2.0.0 (from fastapi[standard])
+  Using cached pydantic_settings-2.13.1-py3-none-any.whl.metadata (3.4 kB)
+Collecting pydantic-extra-types>=2.0.0 (from fastapi[standard])
+  Using cached pydantic_extra_types-2.11.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting anyio (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Using cached anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+Collecting certifi (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting dnspython>=2.0.0 (from email-validator>=2.0.0->fastapi[standard])
+  Using cached dnspython-2.8.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting typer>=0.16.0 (from fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached typer-0.24.1-py3-none-any.whl.metadata (16 kB)
+Collecting rich-toolkit>=0.14.8 (from fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached rich_toolkit-0.19.7-py3-none-any.whl.metadata (1.0 kB)
+Collecting fastapi-cloud-cli>=0.1.1 (from fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached fastapi_cloud_cli-0.14.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting rignore>=0.5.1 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached rignore-0.7.6-cp313-cp313-macosx_11_0_arm64.whl.metadata (4.2 kB)
+Collecting sentry-sdk>=2.20.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached sentry_sdk-2.54.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting fastar>=0.8.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached fastar-0.8.0-cp313-cp313-macosx_11_0_arm64.whl.metadata (4.0 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.1.5->fastapi[standard])
+  Using cached markupsafe-3.0.3-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.7.0->fastapi[standard])
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic>=2.7.0->fastapi[standard])
+  Using cached pydantic_core-2.41.5-cp313-cp313-macosx_11_0_arm64.whl.metadata (7.3 kB)
+Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.0.0->fastapi[standard])
+  Using cached python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+Collecting click>=8.1.7 (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting rich>=13.7.1 (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting urllib3>=1.26.11 (from sentry-sdk>=2.20.0->fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting shellingham>=1.3.0 (from typer>=0.16.0->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard])
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached httptools-0.7.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached pyyaml-6.0.3-cp313-cp313-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached uvloop-0.22.1-cp313-cp313-macosx_10_13_universal2.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached watchfiles-1.1.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Using cached websockets-16.0-cp313-cp313-macosx_11_0_arm64.whl.metadata (6.8 kB)
+Using cached fastapi-0.135.1-py3-none-any.whl (116 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached email_validator-2.3.0-py3-none-any.whl (35 kB)
+Using cached dnspython-2.8.0-py3-none-any.whl (331 kB)
+Using cached fastapi_cli-0.0.24-py3-none-any.whl (12 kB)
+Using cached fastapi_cloud_cli-0.14.0-py3-none-any.whl (28 kB)
+Using cached fastar-0.8.0-cp313-cp313-macosx_11_0_arm64.whl (628 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp313-cp313-macosx_11_0_arm64.whl (12 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp313-cp313-macosx_11_0_arm64.whl (1.9 MB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached pydantic_extra_types-2.11.0-py3-none-any.whl (74 kB)
+Using cached pydantic_settings-2.13.1-py3-none-any.whl (58 kB)
+Using cached python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+Using cached python_multipart-0.0.22-py3-none-any.whl (24 kB)
+Using cached rich_toolkit-0.19.7-py3-none-any.whl (32 kB)
+Using cached click-8.3.1-py3-none-any.whl (108 kB)
+Using cached rich-14.3.3-py3-none-any.whl (310 kB)
+Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached rignore-0.7.6-cp313-cp313-macosx_11_0_arm64.whl (820 kB)
+Using cached sentry_sdk-2.54.0-py2.py3-none-any.whl (439 kB)
+Using cached starlette-0.52.1-py3-none-any.whl (74 kB)
+Using cached anyio-4.12.1-py3-none-any.whl (113 kB)
+Using cached typer-0.24.1-py3-none-any.whl (56 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached uvicorn-0.41.0-py3-none-any.whl (68 kB)
+Using cached httptools-0.7.1-cp313-cp313-macosx_11_0_arm64.whl (108 kB)
+Using cached pyyaml-6.0.3-cp313-cp313-macosx_11_0_arm64.whl (173 kB)
+Using cached uvloop-0.22.1-cp313-cp313-macosx_10_13_universal2.whl (1.4 MB)
+Using cached watchfiles-1.1.1-cp313-cp313-macosx_11_0_arm64.whl (391 kB)
+Using cached websockets-16.0-cp313-cp313-macosx_11_0_arm64.whl (175 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: websockets, uvloop, urllib3, typing-extensions, shellingham, rignore, pyyaml, python-multipart, python-dotenv, pygments, mdurl, MarkupSafe, idna, httptools, h11, fastar, dnspython, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, sentry-sdk, pydantic-core, markdown-it-py, jinja2, httpcore, email-validator, anyio, watchfiles, starlette, rich, pydantic, httpx, typer, rich-toolkit, pydantic-settings, pydantic-extra-types, fastapi, fastapi-cloud-cli, fastapi-cli
+Successfully installed MarkupSafe-3.0.3 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.1 certifi-2026.2.25 click-8.3.1 dnspython-2.8.0 email-validator-2.3.0 fastapi-0.135.1 fastapi-cli-0.0.24 fastapi-cloud-cli-0.14.0 fastar-0.8.0 h11-0.16.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.28.1 idna-3.11 jinja2-3.1.6 markdown-it-py-4.0.0 mdurl-0.1.2 pydantic-2.12.5 pydantic-core-2.41.5 pydantic-extra-types-2.11.0 pydantic-settings-2.13.1 pygments-2.19.2 python-dotenv-1.2.2 python-multipart-0.0.22 pyyaml-6.0.3 rich-14.3.3 rich-toolkit-0.19.7 rignore-0.7.6 sentry-sdk-2.54.0 shellingham-1.5.4 starlette-0.52.1 typer-0.24.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.3 uvicorn-0.41.0 uvloop-0.22.1 watchfiles-1.1.1 websockets-16.0
+
+[notice] A new release of pip is available: 25.2 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % vim main.py
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % fastapi dev main.py
+
+   FastAPI   Starting development server 🚀
+ 
+             Searching for package file structure from directories with         
+             __init__.py files                                                  
+             Importing from                                                     
+             /Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab12/
+             brute-force-server                                                 
+ 
+    module   🐍 main.py
+ 
+      code   Importing the FastAPI app object from the module with the following
+             code:                                                              
+ 
+             from main import app
+ 
+       app   Using import string: main:app
+ 
+    server   Server started at http://127.0.0.1:8000
+    server   Documentation at http://127.0.0.1:8000/docs
+ 
+       tip   Running in development mode, for production use: fastapi run
+ 
+             Logs:
+ 
+      INFO   Will watch for changes in these directories:                       
+             ['/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab1
+             2/brute-force-server']
+      INFO   Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+      INFO   Started reloader process [8929] using WatchFiles
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/idna/intranges.py', 
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/__init__.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/dependency_groups/_p
+             ip_wrapper.py',                                                    
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/models.py',
+             'venv/lib/python3.13/site-packages/pip/_vendor/msgpack/exceptions.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/formatter.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/idna/package_data.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/__main__.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/exceptions.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/packages.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers
+             /__init__.py',                                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/msgpack/fallback.py'
+             ,                                                                  
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/hooks.py'. 
+             Reloading...
+      INFO   Started server process [8955]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8955]
+      INFO   Started server process [8957]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/cache.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/_version.py'
+             ,                                                                  
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/wrapper
+             .py',                                                              
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/adapters.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/requests/structures.
+             py',                                                               
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/unistring.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/connection.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/regexopt.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/idna/__init__.py',  
+             'venv/lib/python3.13/site-packages/pip/_vendor/idna/uts46data.py', 
+             'venv/lib/python3.13/site-packages/pip/_vendor/idna/core.py'.      
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8957]
+      INFO   Started server process [8958]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/api.py'
+             . Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8958]
+      INFO   Started server process [8960]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/filter.py'.
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8960]
+      INFO   Started server process [8963]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/filewra
+             pper.py',                                                          
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/sphinxext.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__init_
+             _.py',                                                             
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/util.py',  
+             'venv/lib/python3.13/site-packages/pip/_vendor/dependency_groups/__
+             init__.py',                                                        
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/control
+             ler.py',                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/windows
+             .py',                                                              
+             'venv/lib/python3.13/site-packages/pip/_vendor/dependency_groups/_t
+             oml_compat.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8963]
+      INFO   Started server process [8966]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/plugin.py',
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/macos.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers
+             /resolution.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8966]
+      INFO   Started server process [8970]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/dependency_groups/_i
+             mplementation.py',                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/android
+             .py',                                                              
+             'venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__main_
+             _.py',                                                             
+             'venv/lib/python3.13/site-packages/pip/_vendor/dependency_groups/_l
+             int_dependency_groups.py',                                         
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/style.py', 
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/__init_
+             _.py',                                                             
+             'venv/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers
+             /exceptions.py',                                                   
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/token.py'. 
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8970]
+      INFO   Started server process [8972]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/packaging/licenses/_
+             _init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8972]
+      INFO   Started server process [8975]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/packaging/licenses/_
+             spdx.py',                                                          
+             'venv/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers
+             /abstract.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8975]
+      INFO   Started server process [8983]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/resolvelib/resolvers
+             /criterion.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8983]
+      INFO   Started server process [8988]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/ssl_.py
+             ',                                                                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/lexers/pyth
+             on.py',                                                            
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/request
+             .py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8988]
+      INFO   Started server process [8990]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/pyproject_hooks/_in_
+             process/_in_process.py',                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/sock
+             s.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8990]
+      INFO   Started server process [8991]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/caches/
+             file_cache.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8991]
+      INFO   Started server process [8993]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/ntlm
+             pool.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8993]
+      INFO   Started server process [8995]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                     
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/queue.p
+             y',                                                                
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/formatters/
+             __init__.py',                                                      
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/formatters/
+             _mapping.py',                                                      
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/proxy.p
+             y'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8995]
+      INFO   Started server process [8996]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/caches/redis_cache.py',      
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/response.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8996]
+      INFO   Started server process [8997]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/wait.py',                    
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/packages/six.py',                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/packages/__init__.py'.            
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8997]
+      INFO   Started server process [8998]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/url.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8998]
+      INFO   Started server process [8999]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/pyopenssl.py',            
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/timeout.py',                 
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/appengine.py'.            
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [8999]
+      INFO   Started server process [9010]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_appengine_environ.py',   
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/__init__.py',                
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/__init__.py',             
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/connection.py',              
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/ssl_match_hostname.py',      
+             'venv/lib/python3.13/site-packages/pip/_vendor/pyproject_hooks/_in_process/__init__.py'. 
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9010]
+      INFO   Started server process [9011]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/ssltransport.py',            
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/securetransport.py',      
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/retry.py',                   
+             'venv/lib/python3.13/site-packages/pip/_vendor/cachecontrol/caches/__init__.py'.         
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9011]
+      INFO   Started server process [9022]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/appdirs.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/_log.py',                         
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/retry.py',                        
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/_jaraco_text.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/virtualenv.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9022]
+      INFO   Started server process [9023]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/packages/backports/__init__.py',  
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/packaging.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/unpacking.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/egg_link.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/temp_dir.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9023]
+      INFO   Started server process [9024]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/lexers/__init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9024]
+      INFO   Started server process [9025]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/packages/backports/makefile.py',  
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/packages/backports/weakref_finaliz
+             e.py', 'venv/lib/python3.13/site-packages/pip/_internal/utils/subprocess.py',            
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/urls.py',                         
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/logging.py',                      
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/lexers/_mapping.py',             
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__init__.
+             py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9025]
+      INFO   Started server process [9026]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/styles/__init__.py',             
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/styles/_mapping.py',             
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/wheel.py',                        
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_securetransport/low_level
+             .py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9026]
+      INFO   Started server process [9027]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/filetypes.py',                    
+             'venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_securetransport/bindings.
+             py', 'venv/lib/python3.13/site-packages/pip/_internal/utils/direct_url_helpers.py'.      
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9027]
+      INFO   Started server process [9028]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_vendor/pygments/filters/__init__.py',            
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/deprecation.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9028]
+      INFO   Started server process [9032]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/base_command.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9032]
+      INFO   Started server process [9033]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/models/selection_prefs.py',             
+             'venv/lib/python3.13/site-packages/pip/_internal/network/auth.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/models/index.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/network/utils.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/network/__init__.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/filesystem.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/req_command.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/main.py',                           
+             'venv/lib/python3.13/site-packages/pip/_internal/models/target_python.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9033]
+      INFO   Started server process [9034]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/glibc.py',                        
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/__init__.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/distributions/wheel.py',                
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/misc.py',                         
+             'venv/lib/python3.13/site-packages/pip/_internal/network/lazy_wheel.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/spinners.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/entrypoints.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/parser.py',                         
+             'venv/lib/python3.13/site-packages/pip/_internal/distributions/base.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/autocompletion.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/index_command.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/distributions/installed.py',            
+             'venv/lib/python3.13/site-packages/pip/_internal/network/xmlrpc.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/status_codes.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/models/search_scope.py',                
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/command_context.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9034]
+      INFO   Started server process [9035]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/distributions/__init__.py',             
+             'venv/lib/python3.13/site-packages/pip/_internal/models/link.py',                        
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/compatibility_tags.py',           
+             'venv/lib/python3.13/site-packages/pip/_internal/models/pylock.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/compat.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/main_parser.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/hashes.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9035]
+      INFO   Started server process [9036]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/cmdoptions.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/datetime.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/network/session.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/utils/setuptools_build.py',             
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/base.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/models/installation_report.py'.         
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9036]
+      INFO   Started server process [9041]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/models/scheme.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/git.py',                            
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/completion.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9041]
+      INFO   Started server process [9042]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/search.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/hash.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/lock.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/mercurial.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/__init__.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/models/candidate.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/__init__.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/bazaar.py',                         
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/__init__.py',                
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/__init__.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/index/collector.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/prepare.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/locations/_sysconfig.py',               
+             'venv/lib/python3.13/site-packages/pip/_internal/network/cache.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/_json.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/__init__.py',                
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/check.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/index.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/inspect.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/base.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/models/format_control.py',              
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/list.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/help.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/uninstall.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/install.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9042]
+      INFO   Started server process [9043]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/network/download.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/pkg_resources.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9043]
+      INFO   Started server process [9044]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/models/wheel.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/__init__.py',                       
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/download.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/subversion.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/models/direct_url.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9044]
+      INFO   Started server process [9045]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/locations/__init__.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/vcs/versioncontrol.py',                 
+             'venv/lib/python3.13/site-packages/pip/_internal/distributions/sdist.py',                
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/freeze.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/show.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/cli/progress_bars.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/wheel.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/models/__init__.py',                    
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/debug.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/index/package_finder.py',               
+             'venv/lib/python3.13/site-packages/pip/_internal/index/__init__.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/cache.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/commands/configuration.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9045]
+      INFO   Started server process [9046]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/freeze.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9046]
+      INFO   Started server process [9047]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/locations/_distutils.py',               
+             'venv/lib/python3.13/site-packages/pip/_internal/req/req_uninstall.py',                  
+             'venv/lib/python3.13/site-packages/pip/_internal/index/sources.py',                      
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/check.py',                   
+             'venv/lib/python3.13/site-packages/pip/_internal/locations/base.py',                     
+             'venv/lib/python3.13/site-packages/pip/_internal/req/req_file.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9047]
+      INFO   Started server process [9048]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/req/req_install.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9048]
+      INFO   Started server process [9057]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/req/req_dependency_group.py'.           
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9057]
+      INFO   Started server process [9060]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/req/req_set.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9060]
+      INFO   Started server process [9061]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/req/__init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9061]
+      INFO   Started server process [9062]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/req/constructors.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9062]
+      INFO   Started server process [9063]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/__init__.py',     
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/importlib/__init__.py'.        
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9063]
+      INFO   Started server process [9070]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/factory.py'.      
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9070]
+      INFO   Started server process [9072]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/found_candidates.p
+             y',                                                                                      
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/metadata_legacy.py',   
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/base.py',         
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/importlib/_compat.py',         
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/build_tracker.py'.     
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9072]
+      INFO   Started server process [9073]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/wheel_legacy.py',      
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/requirements.py', 
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/provider.py'.     
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9073]
+      INFO   Started server process [9075]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/legacy/resolver.py',         
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/legacy/__init__.py',         
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/install/editable_legacy.py', 
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/__init__.py'.          
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9075]
+      INFO   Started server process [9076]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/importlib/_dists.py',          
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/install/wheel.py'.           
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9076]
+      INFO   Started server process [9078]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/reporter.py',     
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/candidates.py',   
+             'venv/lib/python3.13/site-packages/pip/_internal/resolution/resolvelib/resolver.py',     
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/metadata_editable.py'. 
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9078]
+      INFO   Started server process [9079]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/wheel_editable.py',    
+             'venv/lib/python3.13/site-packages/pip/_internal/metadata/importlib/_envs.py',           
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/wheel.py',             
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/build/metadata.py'.          
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9079]
+      INFO   Started server process [9081]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pip/_internal/operations/install/__init__.py'.        
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9081]
+      INFO   Started server process [9085]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/websockets/http.py',   
+             'venv/lib/python3.13/site-packages/urllib3/_collections.py',                             
+             'venv/lib/python3.13/site-packages/websockets/version.py',                               
+             'venv/lib/python3.13/site-packages/urllib3/_base_connection.py',                         
+             'venv/lib/python3.13/site-packages/uvloop/includes/__init__.py',                         
+             'venv/lib/python3.13/site-packages/websockets/server.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9085]
+      INFO   Started server process [9088]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/urllib3/http2/probe.py',                              
+             'venv/lib/python3.13/site-packages/urllib3/fields.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9088]
+      INFO   Started server process [9092]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/urllib3/connection.py',
+             'venv/lib/python3.13/site-packages/urllib3/response.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9092]
+      INFO   Started server process [9093]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/urllib3/exceptions.py',
+             'venv/lib/python3.13/site-packages/websockets/imports.py',                               
+             'venv/lib/python3.13/site-packages/websockets/headers.py',                               
+             'venv/lib/python3.13/site-packages/urllib3/poolmanager.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9093]
+      INFO   Started server process [9095]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/websockets/typing.py', 
+             'venv/lib/python3.13/site-packages/websockets/utils.py',                                 
+             'venv/lib/python3.13/site-packages/websockets/sync/__init__.py',                         
+             'venv/lib/python3.13/site-packages/urllib3/filepost.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9095]
+      INFO   Started server process [9097]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/websockets/frames.py', 
+             'venv/lib/python3.13/site-packages/websockets/sync/client.py',                           
+             'venv/lib/python3.13/site-packages/websockets/sync/utils.py',                            
+             'venv/lib/python3.13/site-packages/websockets/http11.py',                                
+             'venv/lib/python3.13/site-packages/urllib3/http2/__init__.py',                           
+             'venv/lib/python3.13/site-packages/websockets/protocol.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9097]
+      INFO   Started server process [9098]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/websockets/connection.py',                            
+             'venv/lib/python3.13/site-packages/urllib3/_request_methods.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9098]
+      INFO   Started server process [9099]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/websockets/__init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9099]
+      INFO   Started server process [9100]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/websockets/sync/router.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9100]
+      INFO   Started server process [9101]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/urllib3/contrib/__init__.py',                         
+             'venv/lib/python3.13/site-packages/dotenv/__main__.py',                                  
+             'venv/lib/python3.13/site-packages/multipart/exceptions.py',                             
+             'venv/lib/python3.13/site-packages/dotenv/cli.py',                                       
+             'venv/lib/python3.13/site-packages/uvloop/_noop.py',                                     
+             'venv/lib/python3.13/site-packages/uvloop/_testbase.py',                                 
+             'venv/lib/python3.13/site-packages/typing_extensions.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9101]
+      INFO   Started server process [9102]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/websockets/sync/messages.py',                         
+             'venv/lib/python3.13/site-packages/uvloop/_version.py',                                  
+             'venv/lib/python3.13/site-packages/websockets/sync/connection.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9102]
+      INFO   Started server process [9103]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/urllib3/__init__.py',  
+             'venv/lib/python3.13/site-packages/urllib3/connectionpool.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9103]
+      INFO   Started server process [9104]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/urllib3/_version.py',  
+             'venv/lib/python3.13/site-packages/urllib3/http2/connection.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9104]
+      INFO   Started server process [9105]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/dotenv/version.py'.    
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9105]
+      INFO   Started server process [9108]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/urllib3/contrib/pyopenssl.py',                        
+             'venv/lib/python3.13/site-packages/multipart/__init__.py',                               
+             'venv/lib/python3.13/site-packages/websockets/asyncio/async_timeout.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9108]
+      INFO   Started server process [9110]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/pygments/console.py',  
+             'venv/lib/python3.13/site-packages/dotenv/main.py',                                      
+             'venv/lib/python3.13/site-packages/pygments/cmdline.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9110]
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/pygments/filter.py',   
+             'venv/lib/python3.13/site-packages/yaml/serializer.py',                                  
+             'venv/lib/python3.13/site-packages/pygments/style.py',                                   
+             'venv/lib/python3.13/site-packages/yaml/composer.py',                                    
+             'venv/lib/python3.13/site-packages/python_multipart/exceptions.py',                      
+             'venv/lib/python3.13/site-packages/yaml/resolver.py'. Reloading...
+      INFO   Started server process [9112]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/yaml/reader.py',       
+             'venv/lib/python3.13/site-packages/pygments/regexopt.py',                                
+             'venv/lib/python3.13/site-packages/dotenv/ipython.py',                                   
+             'venv/lib/python3.13/site-packages/yaml/__init__.py',                                    
+             'venv/lib/python3.13/site-packages/dotenv/__init__.py',                                  
+             'venv/lib/python3.13/site-packages/pygments/token.py',                                   
+             'venv/lib/python3.13/site-packages/dotenv/variables.py',                                 
+             'venv/lib/python3.13/site-packages/pygments/util.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9112]
+      INFO   Started server process [9113]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/yaml/representer.py',  
+             'venv/lib/python3.13/site-packages/yaml/cyaml.py',                                       
+             'venv/lib/python3.13/site-packages/yaml/scanner.py',                                     
+             'venv/lib/python3.13/site-packages/yaml/loader.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9113]
+      INFO   Started server process [9115]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/pygments/scanner.py',  
+             'venv/lib/python3.13/site-packages/pygments/plugin.py',                                  
+             'venv/lib/python3.13/site-packages/pygments/sphinxext.py',                               
+             'venv/lib/python3.13/site-packages/yaml/events.py',                                      
+             'venv/lib/python3.13/site-packages/multipart/multipart.py',                              
+             'venv/lib/python3.13/site-packages/yaml/tokens.py',                                      
+             'venv/lib/python3.13/site-packages/yaml/error.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9115]
+      INFO   Started server process [9116]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/pygments/__init__.py', 
+             'venv/lib/python3.13/site-packages/python_multipart/multipart.py',                       
+             'venv/lib/python3.13/site-packages/_yaml/__init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9116]
+      INFO   Started server process [9117]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/yaml/emitter.py'.      
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9117]
+      INFO   Started server process [9119]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/shellingham/nt.py'.    
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9119]
+      INFO   Started server process [9120]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/yaml/parser.py'.       
+             Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9120]
+      INFO   Started server process [9121]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/yaml/nodes.py',        
+             'venv/lib/python3.13/site-packages/pygments/lexer.py',                                   
+             'venv/lib/python3.13/site-packages/dotenv/parser.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9121]
+      INFO   Started server process [9122]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/tablegen.py',                         
+             'venv/lib/python3.13/site-packages/websockets/extensions/permessage_deflate.py',         
+             'venv/lib/python3.13/site-packages/pygments/formatters/_mapping.py',                     
+             'venv/lib/python3.13/site-packages/pygments/modeline.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9122]
+      INFO   Started server process [9123]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/berry.py',                            
+             'venv/lib/python3.13/site-packages/pygments/formatters/latex.py',                        
+             'venv/lib/python3.13/site-packages/websockets/sync/server.py',                           
+             'venv/lib/python3.13/site-packages/pygments/formatter.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9123]
+      INFO   Started server process [9125]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/formatters/__init__.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9125]
+      INFO   Started server process [9126]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/websockets/legacy/__init__.py',                       
+             'venv/lib/python3.13/site-packages/python_multipart/decoders.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/jmespath.py',                         
+             'venv/lib/python3.13/site-packages/pygments/unistring.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9126]
+      INFO   Started server process [9127]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/int_fiction.py',                      
+             'venv/lib/python3.13/site-packages/shellingham/posix/proc.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/perl.py',                             
+             'venv/lib/python3.13/site-packages/pygments/formatters/terminal256.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/_stata_builtins.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/zig.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/yara.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/floscript.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9127]
+      INFO   Started server process [9130]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/sql.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/tls.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/dylan.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9130]
+      INFO   Started server process [9139]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/freefem.py',                          
+             'venv/lib/python3.13/site-packages/yaml/constructor.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9139]
+      INFO   Started server process [9140]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/modeling.py',                         
+             'venv/lib/python3.13/site-packages/python_multipart/__init__.py',                        
+             'venv/lib/python3.13/site-packages/multipart/decoders.py',                               
+             'venv/lib/python3.13/site-packages/websockets/legacy/auth.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_mapping.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/fortran.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9140]
+      INFO   Started server process [9141]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/formatters/img.py',                          
+             'venv/lib/python3.13/site-packages/websockets/extensions/__init__.py',                   
+             'venv/lib/python3.13/site-packages/pygments/formatters/other.py',                        
+             'venv/lib/python3.13/site-packages/pygments/__main__.py',                                
+             'venv/lib/python3.13/site-packages/pygments/lexers/_lilypond_builtins.py',               
+             'venv/lib/python3.13/site-packages/yaml/dumper.py',                                      
+             'venv/lib/python3.13/site-packages/pygments/lexers/typst.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9141]
+      INFO   Started server process [9142]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/formatters/svg.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9142]
+      INFO   Started server process [9143]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/formatters/rtf.py',                          
+             'venv/lib/python3.13/site-packages/pygments/formatters/groff.py',                        
+             'venv/lib/python3.13/site-packages/shellingham/posix/ps.py',                             
+             'venv/lib/python3.13/site-packages/shellingham/posix/_core.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/scripting.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9143]
+      INFO   Started server process [9144]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/rignore/__init__.py',  
+             'venv/lib/python3.13/site-packages/shellingham/posix/__init__.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/mips.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9144]
+      INFO   Started server process [9145]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_luau_builtins.py',                   
+             'venv/lib/python3.13/site-packages/pygments/lexers/lilypond.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/sas.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/_csound_builtins.py',                 
+             'venv/lib/python3.13/site-packages/pygments/lexers/whiley.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/qvt.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/configs.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/yang.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/asm.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/trafficscript.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/_scilab_builtins.py',                 
+             'venv/lib/python3.13/site-packages/pygments/lexers/modula2.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/ampl.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/ml.py',                               
+             'venv/lib/python3.13/site-packages/pygments/lexers/meson.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/r.py',                                
+             'venv/lib/python3.13/site-packages/pygments/lexers/go.py',                               
+             'venv/lib/python3.13/site-packages/pygments/lexers/apdlexer.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/actionscript.py',                     
+             'venv/lib/python3.13/site-packages/pygments/lexers/arrow.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/q.py',                                
+             'venv/lib/python3.13/site-packages/pygments/lexers/diff.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/devicetree.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/nit.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/dns.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/ldap.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9145]
+      INFO   Started server process [9146]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/objective.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/macaulay2.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/lean.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/snobol.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/teraterm.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/_qlik_builtins.py',                   
+             'venv/lib/python3.13/site-packages/pygments/lexers/roboconf.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/other.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/__init__.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/qlik.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/sieve.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/ada.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/ruby.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/ptx.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/_sourcemod_builtins.py',              
+             'venv/lib/python3.13/site-packages/pygments/lexers/inferno.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/text.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/webassembly.py',                      
+             'venv/lib/python3.13/site-packages/pygments/lexers/cddl.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/ride.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/special.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/felix.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/soong.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/ezhil.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/_sql_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/verifpal.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/idl.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/javascript.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/monte.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/_vim_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/graph.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/python.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9146]
+      INFO   Started server process [9147]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/pony.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/srcinfo.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/d.py',                                
+             'venv/lib/python3.13/site-packages/pygments/lexers/tnt.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/pascal.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/prql.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/_cl_builtins.py',                     
+             'venv/lib/python3.13/site-packages/pygments/lexers/func.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/archetype.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/chapel.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/oberon.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/basic.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/asc.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/_julia_builtins.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/thingsdb.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9147]
+      INFO   Started server process [9148]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/rdf.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/_php_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/fantom.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/smalltalk.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/crystal.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/slash.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/x10.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/jsx.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/rust.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/_stan_builtins.py',                   
+             'venv/lib/python3.13/site-packages/pygments/lexers/solidity.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/usd.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9148]
+      INFO   Started server process [9149]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/xorg.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/ncl.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/agile.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/teal.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/css.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/smv.py',                              
+             'venv/lib/python3.13/site-packages/websockets/legacy/protocol.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/automation.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/parsers.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/tlb.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/kusto.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/c_cpp.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/tal.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/erlang.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/dalvik.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_lua_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/_lasso_builtins.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/gcodelexer.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/elpi.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/foxpro.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/spice.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/forth.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9149]
+      INFO   Started server process [9150]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in 'venv/lib/python3.13/site-packages/pygments/lexers/j.py', 
+             'venv/lib/python3.13/site-packages/pygments/lexers/textfmts.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/php.py',                              
+             'venv/lib/python3.13/site-packages/pygments/formatters/html.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/bqn.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/wgsl.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/maxima.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9150]
+      INFO   Started server process [9151]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/rnc.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/make.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/haskell.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/dax.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/boa.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/_ada_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/ooc.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/vyper.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/pointless.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/_asy_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/savi.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/_usd_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/markup.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/apl.py',                              
+             'venv/lib/python3.13/site-packages/pygments/formatters/irc.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/promql.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/email.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/iolang.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9151]
+      INFO   Started server process [9157]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/webidl.py',                           
+             'venv/lib/python3.13/site-packages/websockets/datastructures.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/_openedge_builtins.py',               
+             'venv/lib/python3.13/site-packages/pygments/lexers/factor.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/clean.py',                            
+             'venv/lib/python3.13/site-packages/websockets/uri.py',                                   
+             'venv/lib/python3.13/site-packages/pygments/lexers/algebra.py',                          
+             'venv/lib/python3.13/site-packages/pygments/formatters/pangomarkup.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/nimrod.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/tact.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/ambient.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/testing.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9157]
+      INFO   Started server process [9162]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/bibtex.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/rebol.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/sophia.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_vbscript_builtins.py',               
+             'venv/lib/python3.13/site-packages/pygments/lexers/procfile.py',                         
+             'venv/lib/python3.13/site-packages/websockets/client.py',                                
+             'venv/lib/python3.13/site-packages/pygments/lexers/pddl.py',                             
+             'venv/lib/python3.13/site-packages/websockets/legacy/http.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/comal.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/web.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/asn1.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/console.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/html.py',                             
+             'venv/lib/python3.13/site-packages/websockets/extensions/base.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/tcl.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9162]
+      INFO   Started server process [9167]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/verification.py',                     
+             'venv/lib/python3.13/site-packages/pygments/lexers/json5.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/compiled.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/wren.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/graphql.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/_tsql_builtins.py',                   
+             'venv/lib/python3.13/site-packages/pygments/lexers/sgf.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/arturo.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/gdscript.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/_mysql_builtins.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/bdd.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/codeql.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_css_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/julia.py',                            
+             'venv/lib/python3.13/site-packages/pygments/filters/__init__.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/praat.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/openscad.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/_googlesql_builtins.py',              
+             'venv/lib/python3.13/site-packages/pygments/lexers/blueprint.py',                        
+             'venv/lib/python3.13/site-packages/websockets/legacy/server.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/installers.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/dsls.py',                             
+             'venv/lib/python3.13/site-packages/websockets/legacy/framing.py',                        
+             'venv/lib/python3.13/site-packages/pygments/lexers/hexdump.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/mime.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/prolog.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/lisp.py',                             
+             'venv/lib/python3.13/site-packages/websockets/legacy/exceptions.py',                     
+             'venv/lib/python3.13/site-packages/pygments/lexers/supercollider.py',                    
+             'venv/lib/python3.13/site-packages/pygments/lexers/jsonnet.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/parasail.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/varnish.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/rego.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9167]
+      INFO   Started server process [9168]
+      INFO   Waiting for application startup.
+      INFO   Application startup complete.
+   WARNING   WatchFiles detected changes in                                                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/cplint.py',                           
+             'venv/lib/python3.13/site-packages/pygments/styles/dracula.py',                          
+             'venv/lib/python3.13/site-packages/pygments/styles/stata_light.py',                      
+             'venv/lib/python3.13/site-packages/pygments/lexers/grammar_notation.py',                 
+             'venv/lib/python3.13/site-packages/pygments/styles/colorful.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/wowtoc.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/gleam.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/_cocoa_builtins.py',                  
+             'venv/lib/python3.13/site-packages/pygments/lexers/stata.py',                            
+             'venv/lib/python3.13/site-packages/pygments/styles/lilypond.py',                         
+             'venv/lib/python3.13/site-packages/pygments/styles/perldoc.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/vip.py',                              
+             'venv/lib/python3.13/site-packages/pygments/lexers/esoteric.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/textedit.py',                         
+             'venv/lib/python3.13/site-packages/pygments/styles/lightbulb.py',                        
+             'venv/lib/python3.13/site-packages/websockets/streams.py',                               
+             'venv/lib/python3.13/site-packages/pygments/styles/rrt.py',                              
+             'venv/lib/python3.13/site-packages/pygments/styles/emacs.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/haxe.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/math.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/amdgpu.py',                           
+             'venv/lib/python3.13/site-packages/pygments/styles/__init__.py',                         
+             'venv/lib/python3.13/site-packages/pygments/styles/algol_nu.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/scdoc.py',                            
+             'venv/lib/python3.13/site-packages/pygments/lexers/resource.py',                         
+             'venv/lib/python3.13/site-packages/pygments/lexers/robotframework.py',                   
+             'venv/lib/python3.13/site-packages/pygments/styles/borland.py',                          
+             'venv/lib/python3.13/site-packages/pygments/lexers/webmisc.py',                          
+             'venv/lib/python3.13/site-packages/pygments/styles/native.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/functional.py',                       
+             'venv/lib/python3.13/site-packages/pygments/styles/manni.py',                            
+             'venv/lib/python3.13/site-packages/pygments/styles/coffee.py',                           
+             'venv/lib/python3.13/site-packages/pygments/styles/fruity.py',                           
+             'venv/lib/python3.13/site-packages/pygments/lexers/_scheme_builtins.py',                 
+             'venv/lib/python3.13/site-packages/pygments/lexers/rita.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/kuin.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/gsql.py',                             
+             'venv/lib/python3.13/site-packages/pygments/styles/abap.py',                             
+             'venv/lib/python3.13/site-packages/pygments/styles/trac.py',                             
+             'venv/lib/python3.13/site-packages/pygments/lexers/_mql_builtins.py',                    
+             'venv/lib/python3.13/site-packages/pygments/styles/bw.py',                               
+             'venv/lib/python3.13/site-packages/websockets/exceptions.py',                            
+             'venv/lib/python3.13/site-packages/pygments/styles/_mapping.py',                         
+             'venv/lib/python3.13/site-packages/pygments/formatters/terminal.py',                     
+             'venv/lib/python3.13/site-packages/pygments/lexers/theorem.py',                          
+             'venv/lib/python3.13/site-packages/pygments/styles/vs.py',                               
+             'venv/lib/python3.13/site-packages/pygments/formatters/bbcode.py',                       
+             'venv/lib/python3.13/site-packages/pygments/styles/sas.py',                              
+             'venv/lib/python3.13/site-packages/pygments/styles/staroffice.py',                       
+             'venv/lib/python3.13/site-packages/pygments/lexers/graphviz.py',                         
+             'venv/lib/python3.13/site-packages/pygments/styles/xcode.py'. Reloading...
+
+      INFO   Shutting down
+      INFO   Waiting for application shutdown.
+      INFO   Application shutdown complete.
+      INFO   Finished server process [9168]
+^C      INFO   Stopping reloader process [8929]
+
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % fastapi dev main.py --reload-exclude venv
+Usage: fastapi dev [OPTIONS] [PATH]
+Try 'fastapi dev -h' for help.
+╭─ Error ────────────────────────────────────────────────────────────────────────────────────────────╮
+│ No such option: --reload-exclude (Possible options: --reload, --reload-dir)                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % fastapi dev main.py --reload-exclude "venv/*"
+Usage: fastapi dev [OPTIONS] [PATH]
+Try 'fastapi dev -h' for help.
+╭─ Error ────────────────────────────────────────────────────────────────────────────────────────────╮
+│ No such option: --reload-exclude (Possible options: --reload, --reload-dir)                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % uvicorn main:app --host 127.0.0.1 --port 8000 --reload --reload-dir .
+INFO:     Will watch for changes in these directories: ['/Users/faridhassani/Desktop/Final_Labs/Information-Security-/Lab12/brute-force-server']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [9240] using WatchFiles
+INFO:     Started server process [9242]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/dedupe.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/stdlib.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/wsgi.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/fastapi.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/argv.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/openfeature.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/sys_exit.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/ai/_openai_completions_api.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/serverless.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/loguru.py', 'venv/lib/python3.13/site-packages/sentry_sdk/crons/api.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/httpx.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/otlp.py', 'venv/lib/python3.13/site-packages/sentry_sdk/ai/monitoring.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/aws_lambda.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/trytond.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/gnu_backtrace.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/clickhouse_driver.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/pyramid.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/threading.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/gql.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/falcon.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/langchain.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/modules.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/rust_tracing.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/sanic.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/sqlalchemy.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/unraisablehook.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/cloud_resource_context.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/excepthook.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/statsig.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/ray.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/executing.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/typer.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/huggingface_hub.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/tornado.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/pure_eval.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/mcp.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/dramatiq.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/starlite.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/quart.py', 'venv/lib/python3.13/site-packages/sentry_sdk/crons/decorator.py', 'venv/lib/python3.13/site-packages/sentry_sdk/ai/_openai_responses_api.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/openai.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/chalice.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/pymongo.py', 'venv/lib/python3.13/site-packages/sentry_sdk/crons/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/ai/utils.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/langgraph.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/gcp.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/bottle.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/ariadne.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/logging.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/_wsgi_common.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/flask.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/arq.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/launchdarkly.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/cohere.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/boto3.py', 'venv/lib/python3.13/site-packages/sentry_sdk/crons/consts.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/beam.py', 'venv/lib/python3.13/site-packages/sentry_sdk/ai/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/rq.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/huey.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/anthropic.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/_asgi_common.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/litellm.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/asyncpg.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/strawberry.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/graphene.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/starlette.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/aiohttp.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/atexit.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/socket.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/unleash.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9242]
+INFO:     Started server process [9246]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/asgi.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/utils.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/litestar.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/http/flow_control.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/templates.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/middleware.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/asgi.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9246]
+INFO:     Started server process [9254]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/uvicorn/protocols/http/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/tasks.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/__init__.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/http/httptools_impl.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/http/auto.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/caching.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/asyncio.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/transactions.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/signals_handlers.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/django/views.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9254]
+INFO:     Started server process [9256]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/uvicorn/supervisors/basereload.py', 'venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/server.py', 'venv/lib/python3.13/site-packages/uvicorn/middleware/wsgi.py', 'venv/lib/python3.13/site-packages/uvicorn/supervisors/watchfilesreload.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/google_genai/utils.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/websockets/wsproto_impl.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/consts.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/client.py', 'venv/lib/python3.13/site-packages/uvicorn/supervisors/multiprocess.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/websockets/websockets_sansio_impl.py', 'venv/lib/python3.13/site-packages/uvicorn/middleware/message_logger.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/google_genai/consts.py', 'venv/lib/python3.13/site-packages/uvicorn/middleware/asgi2.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9256]
+INFO:     Started server process [9265]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/uvicorn/protocols/websockets/__init__.py', 'venv/lib/python3.13/site-packages/uvicorn/supervisors/__init__.py', 'venv/lib/python3.13/site-packages/uvicorn/supervisors/statreload.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/google_genai/__init__.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/websockets/auto.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/google_genai/streaming.py', 'venv/lib/python3.13/site-packages/uvicorn/protocols/websockets/websockets_impl.py', 'venv/lib/python3.13/site-packages/uvicorn/middleware/__init__.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9265]
+INFO:     Started server process [9268]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/markdown_it/ruler.py', 'venv/lib/python3.13/site-packages/markdown_it/tree.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/__init__.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/spark/spark_worker.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9268]
+INFO:     Started server process [9272]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'venv/lib/python3.13/site-packages/markdown_it/rules_core/block.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/text_join.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/smartquotes.py', 'venv/lib/python3.13/site-packages/markdown_it/_punycode.py', 'venv/lib/python3.13/site-packages/urllib3/contrib/emscripten/__init__.py', 'venv/lib/python3.13/site-packages/markdown_it/parser_inline.py', 'venv/lib/python3.13/site-packages/markdown_it/utils.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/spark/__init__.py', 'venv/lib/python3.13/site-packages/markdown_it/renderer.py', 'venv/lib/python3.13/site-packages/markdown_it/main.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/aio/server.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/replacements.py', 'venv/lib/python3.13/site-packages/markdown_it/__init__.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/state_core.py', 'venv/lib/python3.13/site-packages/markdown_it/token.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/inline.py', 'venv/lib/python3.13/site-packages/markdown_it/_compat.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/aio/client.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/normalize.py', 'venv/lib/python3.13/site-packages/markdown_it/parser_core.py', 'venv/lib/python3.13/site-packages/markdown_it/rules_core/linkify.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/spark/spark_driver.py', 'venv/lib/python3.13/site-packages/sentry_sdk/integrations/grpc/aio/__init__.py', 'venv/lib/python3.13/site-packages/markdown_it/parser_block.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9272]
+INFO:     Started server process [9275]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+^CINFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9275]
+INFO:     Stopping reloader process [9240]
+(venv) (base) faridhassani@Farids-MacBook-Air brute-force-server % uvicorn main:app --host 127.0.0.1 --port 8000
+INFO:     Started server process [9298]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49767 - "POST /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49768 - "POST /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49780 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49781 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49782 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49783 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49784 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49786 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49785 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49787 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49788 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49790 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49789 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49791 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49792 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49793 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49794 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49795 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49796 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49797 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49799 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49798 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49803 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49804 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49805 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49802 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49806 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49807 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49808 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49809 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49801 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49800 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49810 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49811 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49816 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49813 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49812 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49825 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49828 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49829 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49831 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49832 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49830 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49834 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49833 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49835 - "GET /login HTTP/1.0" 405 Method Not Allowed
+INFO:     127.0.0.1:49837 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49836 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49839 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49840 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49838 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49841 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49843 - "POST /login HTTP/1.0" 200 OK
+INFO:     127.0.0.1:49842 - "POST /login HTTP/1.0" 200 OK
+
