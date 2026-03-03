@@ -1,0 +1,23 @@
+Last login: Tue Mar  3 14:22:17 on ttys000
+You have new mail.
+(base) faridhassani@Farids-MacBook-Air payment_demo % open index.html
+(base) faridhassani@Farids-MacBook-Air payment_demo % cat payment_data.txt
+[2026-03-03T14:25:22] name=Farid Hassani card=32099902233 exp=12/26 cvv=345 zip=720060
+(base) faridhassani@Farids-MacBook-Air payment_demo % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
