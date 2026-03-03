@@ -1,17 +1,24 @@
-# Information Security Laboratory Portfolio
+# Information Security Laboratory
 
-This repository documents my practical work and progress in the Information Security course.  
-All exercises were completed in a Linux environment and focus on developing hands-on system administration and security skills through weekly laboratory tasks.
-
+I, Mohammad Farid Hassani, am a student of the American University of Central Asia (AUCA) enrolled in the Information Security course during Spring 2026.
+I confirm that I have completed all required laboratory assignments for this course in accordance with the syllabus and instructor guidelines.
+I acknowledge that:
+All laboratory tasks were completed independently.
+All scripts, configurations, and terminal outputs are my original work.
+All deadlines and submission requirements were respected.
+The work submitted in this repository accurately reflects my practical efforts during the semester.
+This repository serves as documented proof of laboratory completion.
+By maintaining this repository, I agree that it represents my academic responsibility and practical engagement in the Information Security course.
 ---
 
- Student Details
+## Student Information
 
-- Student: Name Farid Hassani
-- Program: Software Engineering
-- Course: Information Security
-- University: American University of Central Asia (AUCA)
-- Term: Spring 2026
+Name: Mohammad Farid Hassani
+Student ID: 10818
+Program: Software Engineering
+Course: Information Security
+University: American University of Central Asia (AUCA)
+Semester: Spring 2026
 
 ---
 
@@ -22,12 +29,10 @@ Each lab contains commands, scripts, terminal outputs, and visual proof of compl
 
 Main skills practiced include:
 
-- Linux command-line workflow
 - Bash scripting and automation
 - User permissions and access control
 - Task scheduling using cron
 - Package installation and management
-- Web server configuration
 - Security testing fundamentals
 - Log collection and analysis
 
@@ -35,21 +40,22 @@ Main skills practiced include:
 
 ## Laboratory Structure
 
-| Lab Folder | Topic | Materials Included |
-|------------|-------|-------------------|
-| lab01 | Linux file management basics | screenshots |
-| lab02 | Shell tools and scripting | scripts & images |
-| lab03 | Shell environment practice | screenshots |
-| lab04 | Web service configuration | outputs |
-| lab05 | Advanced Linux exercises | screenshots |
-| lab06 | File permissions & ownership | terminal logs |
-| lab07 | Scheduled automation tasks | logs & scripts |
-| lab08 | Vim editor workflow | practice files |
-| lab09 | APT package operations | command logs |
-| lab10 | NGINX configuration | config files |
-| lab11 | Building software from source | documentation |
-| lab12 | Password attack simulation (Hydra) | reports & logs |
-| lab13 | Keylogging simulation project | Python scripts |
+| Lab        | Topic                               | Files Included as Evidence                                                                                                                                                                                  |
+| ---------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Lab 01** | Linux File Management Basics        | `lab1_output.txt`                                                                                                                                                                                           |
+| **Lab 02** | Shell Scripting & UNIX Tools        | `count_word.sh`, `current_time.sh`, `delete_empty_files.sh`, `greet.sh`                                                                                                                                     |
+| **Lab 03** | Toy Shell Implementation            | `toy_shell.py`                                                                                                                                                                                              |
+| **Lab 04** | Web Server & Phishing Simulation    | `server.py`, `index.html`, `payment_data.txt`, `TRAINING DEMO.png`, `Terminal Saved Output.txt`, `Terminal Saved Output_1.txt`                                                                              |
+| **Lab 05** | User Management in Linux            | `Lab 5. User Management in Linux.txt`                                                                                                                                                                       |
+| **Lab 06** | File Permissions & Ownership        | `file.txt`, `Lab-6-output.txt`                                                                                                                                                                              |
+| **Lab 07** | Cron & Automation                   | `notify.py`, `write_line.sh`, `python_log.txt`, `file.txt`                                                                                                                                                  |
+| **Lab 08** | Vim Editor Practice                 | Screenshots: `Delete ONE line by dd.png`, `Delete ONE line using dd.png`, `Inserting text.png`, `Save and exit from vim.png`, `do & redo yyp and u.png`, `vim file.png`, additional vim command screenshots |
+| **Lab 09** | Package Management                  | `Package management.txt`                                                                                                                                                                                    |
+| **Lab 10** | NGINX Configuration & API Server    | `Configuring NGINX.txt`, `LAB 10.txt`, `api.py`, `Hello from API server.png`, `My site on 8000.png`, `Welcome to nginx!.png`                                                                                |
+| **Lab 11** | Software Installation & Compilation | `Lab-11-output.txt`, `neofetch`, `youtube-dl`, `Information-Security-`                                                                                                                                      |
+| **Lab 12** | Brute-force Attack Simulation       | `brute-force-server`, `lab12_attack_log.txt`, `lab12_server_log.txt`                                                                                                                                        |
+| **Lab 13** | Keylogger & Log Server Simulation   | `api-server`, `keylogger/`, `lab13_client_log.txt`, `lab13_server_log.txt`                                                                                                                                  |
+
 
 ---
 
@@ -58,14 +64,4 @@ Main skills practiced include:
 Through these labs, I improved my confidence working entirely from the terminal and gained practical understanding of how operating system management connects with cybersecurity concepts.  
 The exercises emphasize not only completing tasks but also understanding system behavior and security implications.
 
----
 
-## Academic Context
-
-This project was created as coursework for the Information Security class at AUCA and represents individual laboratory practice completed during the semester.
-
----
-
-## Usage Notice
-
-This repository is intended for educational demonstration only.  
