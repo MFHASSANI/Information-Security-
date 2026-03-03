@@ -3,7 +3,7 @@
 I, Mohammad Farid Hassani, am a student of the American University of Central Asia (AUCA) enrolled in the Information Security course during Spring 2026. I confirm that I have completed all required laboratory assignments for this course in accordance with the syllabus and instructor guidelines.
 I acknowledge that all laboratory tasks were completed independently. All scripts, configurations, and terminal outputs are my original work. All deadlines and submission requirements were respected. The work submitted in this repository accurately reflects my practical efforts during the semester. This repository serves as documented proof of laboratory completion.
 By maintaining this repository, I agree that it represents my academic responsibility and practical engagement in the Information Security course.
----
+
 
 ## Student Information
 
